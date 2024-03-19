@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="art.css">
+  <title>ISHAN GAUTAM</title>
+  <style>
+    /* CSS for hiding the sections by default */
+    .hidden {
+      display: none;
+    }
+    .menu-nav {
+      position:absolute;
+      top: 900%; /* Center the navigation vertically */
+      left: 00%; /* Center the navigation horizontally */
+      transform: translate(-90%, -50%); /* Center the navigation */
+      background-color: rgb(130, 113, 113);
+      padding: 150px;
+      border: 15px solid #ccc;
+      z-index: 999; /* Ensure the menu appears above other elements */
+      /* Initially hidden */
+      display:none;
+    }
+    .menu-nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .menu-nav ul li {
+      margin-bottom: 10px;
+    }
+    /* Custom styling for navigation links */
+    .menu-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* CSS for menu icon animation */
+    .container {
+      cursor: pointer;
+      position: absolute;
+      color: white;
+      top: 10px; /* Adjust this value to shift it to the top */
+      right: 10px; /* Adjust this value to shift it to the right */
+    }
+    .bar {
+      width: 30px;
+      height: 3px;
+      background-color: #333;
+      margin: 6px 0;
+      transition: transform 0.3s ease; /* Smooth transition for transform */
+    }
+    .container.active .bar1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .container.active .bar2 {
+      opacity: 0;
+    }
+    .container.active .bar3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .container.active .menu-nav {
+      display: block; /* Show the navigation links */
+    }
+
+    /* Style for active link */
+    .menu-nav ul li a.active {
+      color: red; /* Change color for active link */
+    }
+
+    /* Style for active section */
+    section.active {
+      display: block; /* Show the active section */
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu icon -->
+  <div class="container" onclick="toggleMenu()">
+    <div class="bar bar1" style="color: aliceblue;"></div>
+    <div class="bar bar2" style="color: aliceblue;"></div>
+    <div class="bar bar3" style="color: aliceblue;"></div>
+    <!-- Navigation links inside the menu icon -->
+    <nav class="menu-nav" id="menuNav">
+      <ul>
+        <li><a href="#classic">Classic Masterpieces</a></li><br>
+        <li><a href="#modern">Modern Marvels</a></li><br>
+        <li><a href="#abstract">Abstract Wonders</a></li><br>
+        <li><a href="#cultural">Cultural Treasures</a></li><br>
+        <li><a href="#avant-garde">Avant-Garde Innovations</a></li><br>
+
+
+      </ul>
+    </nav>
+  </div>
+  <header>
+    <h1 style="">ISHAN GAUTAM</h1>
+    <img src="ishan.jpg" alt="ishan gautam" width="400" height="400">
+    <p>Explore the different sections of art that we have carefully curated for your viewing pleasure.</p>
+  </header>
+  <section id="classic" class="hidden">
+    <h2>Classic Masterpieces</h2>
+    <!-- Images and descriptions for classic masterpieces -->
+  </section>
+  <section id="modern" class="hidden">
+    <h2>Modern Marvels</h2>
+    <img src="Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="" width="400" height="400">
+    <!-- Images and descriptions for modern marvels -->
+  </section>
+  <section id="abstract" class="hidden">
+    <h2>Abstract Wonders</h2>
+    <!-- Images and descriptions for abstract wonders -->
+  </section>
+  <section id="cultural" class="hidden">
+    <h2>Cultural Treasures</h2>
+    <!-- Images and descriptions for cultural treasures -->
+  </section>
+  <section id="avant-garde" class="hidden">
+    <h2>Avant-Garde Innovations</h2>
+    <!-- Images and descriptions for avant-garde innovations -->
+  </section>
+  <script>
+    function toggleMenu() {
+      var menuNav = document.getElementById('menuNav');
+      var container = document.querySelector('.container');
+      menuNav.classList.toggle('hidden');
+      container.classList.toggle('active');
+    }
+
+    // Add event listener to each navigation link to show corresponding section
+    var navLinks = document.querySelectorAll('.menu-nav a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        var targetId = this.getAttribute('href').substring(1);
+        var targetSection = document.getElementById(targetId);
+        // Hide all sections
+        var sections = document.querySelectorAll('section');
+        sections.forEach(function(section) {
+          section.classList.add('hidden');
+        });
+        // Show the target section
+        targetSection.classList.remove('hidden');
+        // Add 'active' class to the clicked link
+        navLinks.forEach(function(navLink) {
+          navLink.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+      
+    });
+  </script>
+  sdjfhasdfssfasffasdf
+</body>
+</html>
